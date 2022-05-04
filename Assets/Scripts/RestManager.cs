@@ -19,10 +19,11 @@ StartCoroutine(consumirApi());
     UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/prueba1");
     yield return url.SendWebRequest();
     Debug.Log(url.downloadHandler.text);
-    infoText.text=url.downloadHandler.text;
+    textValue=url.downloadHandler.text;
 }
 void Update(){
-    // infoText.text=textValue;
+    
+    infoText.text=textValue;
 }
     // Update is called once per frame
   

@@ -7,6 +7,7 @@ TagManager:
   - cameraPortalTaj
   - CameraPortalGod
   - CameraPortalTaj
+  - Text
   layers:
   - Default
   - TransparentFX
