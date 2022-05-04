@@ -13,6 +13,7 @@ public class BasicMovement : MonoBehaviour {
     GameObject mainCamera;
     public GameObject[] portales;
     private int cont = 0;
+    private float speed = 10;
 
     float vMouse;
     float hMouse;
@@ -23,7 +24,7 @@ public class BasicMovement : MonoBehaviour {
     new Camera camera;
 
     int jumps = 1;
-    [SerializeField] float speed = 6, jumpForce = 500;
+    [SerializeField] float jumpForce = 500;
 
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,6 +35,7 @@ public class BasicMovement : MonoBehaviour {
 
     
     void Update() {
+        
         float horizontal = Input.GetAxis("Horizontal"); // A D alrededor
         float vertical = Input.GetAxis("Vertical"); // W S arriba y abajo
 
@@ -51,6 +53,7 @@ public class BasicMovement : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Shoot Portal");
+            Debug.Log("cont = " + cont);
             throwPortal(portales, cont);
         }
         if (Input.GetButtonDown("Fire2"))
@@ -58,10 +61,18 @@ public class BasicMovement : MonoBehaviour {
             Debug.Log("Cambiaste portal");
             cont += 1;
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown("j"))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
         {
+            //speed = 30;
+            //Debug.Log("Velocidad " + speed);
+            //Debug.Log("Run");
             Run();
-        }
+            //transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
+            //transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime); // A D alrededor
+        } /*else  {
+            speed = 6;
+            //Debug.Log("Velocidad " + speed);
+        }*/
     }
 
     void LookMouse()
@@ -85,6 +96,7 @@ public class BasicMovement : MonoBehaviour {
     void throwPortal(GameObject[] portales, int num)
     {
         
+        Debug.Log("num = " + num);
         portales[num].transform.rotation = mainCamera.transform.rotation;
         portales[num].transform.position = mainCamera.transform.position + mainCamera.transform.forward * 5.0f;
         cont = 0;
