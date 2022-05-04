@@ -63,7 +63,11 @@ if(Input.anyKeyDown){
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("Cambiaste portal");
-            cont += 1;
+            if(cont<=portales.Length-1){
+                cont += 1;
+            }else{
+                cont =0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
         {
