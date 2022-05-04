@@ -11,6 +11,8 @@ public class BasicMovement : MonoBehaviour {
     public Transform cam;
     public GameObject Portal;
     GameObject mainCamera;
+    GameObject cameraPortalTaj;
+    GameObject cameraPortalGod;
     public GameObject[] portales;
     private int cont = 0;
     private float speed = 10;
@@ -31,21 +33,23 @@ public class BasicMovement : MonoBehaviour {
         camera = GetComponentInChildren<Camera>();
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = GameObject.FindWithTag("MainCamera");
+        cameraPortalTaj = GameObject.FindWithTag("CameraPortalTaj");
+        cameraPortalGod = GameObject.FindWithTag("CameraPortalGod");
     }
 
     
     void Update() {
         
-        float horizontal = Input.GetAxis("Horizontal"); // A D alrededor
-        float vertical = Input.GetAxis("Vertical"); // W S arriba y abajo
+       Vector3 velocity = camera.transform.forward * Input.GetAxis("Vertical") * speed;
+        transform.position += velocity * Time.deltaTime;
 
-        transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
-        transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime); // A D alrededor
+        // transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
+        // transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime); // A D alrededor
 
-        LookMouse();
-        //Vector3 velocity = camera.transform.forward * Input.GetAxis("Vertical") * speed;
-        //transform.position += velocity * Time.deltaTime;
-
+        // LookMouse();
+       
+if(Input.anyKeyDown){
+    Debug.Log(Input.inputString);}
         if (Input.GetButtonDown("Jump")) {
             Jump();
         }
@@ -63,16 +67,12 @@ public class BasicMovement : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
         {
-            //speed = 30;
-            //Debug.Log("Velocidad " + speed);
-            //Debug.Log("Run");
+            
             Run();
-            //transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
-            //transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime); // A D alrededor
-        } /*else  {
-            speed = 6;
-            //Debug.Log("Velocidad " + speed);
-        }*/
+           
+        } 
+        cameraPortalTaj.transform.rotation=mainCamera.transform.rotation;
+        cameraPortalGod.transform.rotation=mainCamera.transform.rotation;
     }
 
     void LookMouse()
