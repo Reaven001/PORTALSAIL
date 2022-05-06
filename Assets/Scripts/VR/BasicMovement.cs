@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 //-----------------------------------------------------------------------
 // Basic movement when we want the player to move using a gamepad
@@ -16,6 +18,7 @@ public class BasicMovement : MonoBehaviour {
     public GameObject[] portales;
     private int cont = 0;
     private float speed = 10;
+    public Text infoText;
 
     float vMouse;
     float hMouse;
@@ -52,6 +55,8 @@ if(Input.anyKeyDown){
     Debug.Log(Input.inputString);}
         if (Input.GetButtonDown("Jump")) {
             Jump();
+                infoText.text=" ";
+
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -59,9 +64,13 @@ if(Input.anyKeyDown){
             Debug.Log("Shoot Portal");
             Debug.Log("cont = " + cont);
             throwPortal(portales, cont);
+                infoText.text=" ";
+
         }
         if (Input.GetButtonDown("Fire2"))
         {
+                infoText.text=" ";
+
             Debug.Log("Cambiaste portal");
             if(cont<=portales.Length-1){
                 cont += 1;
@@ -71,7 +80,8 @@ if(Input.anyKeyDown){
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
         {
-            
+                infoText.text=" ";
+
             Run();
            
         } 
