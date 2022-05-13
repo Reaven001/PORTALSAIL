@@ -27,6 +27,7 @@ public class BasicMovement : MonoBehaviour {
     public float verticalSpeed;
     new Rigidbody rigidbody;
     new Camera camera;
+    public float lateralMove;
 
     int jumps = 1;
     [SerializeField] float jumpForce = 500;
@@ -42,8 +43,10 @@ public class BasicMovement : MonoBehaviour {
 
     
     void Update() {
-        
-       Vector3 velocity = camera.transform.forward * Input.GetAxis("Vertical") * speed;
+        lateralMove = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * lateralMove * Time.deltaTime * speed);
+
+        Vector3 velocity = camera.transform.forward * Input.GetAxis("Vertical") * speed;
         transform.position += velocity * Time.deltaTime;
 
         // transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
@@ -51,42 +54,47 @@ public class BasicMovement : MonoBehaviour {
 
         // LookMouse();
        
-if(Input.anyKeyDown){
-    Debug.Log(Input.inputString);}
-        if (Input.GetButtonDown("Jump")) {
-            Jump();
-                infoText.text=" ";
+        if(Input.anyKeyDown){
+            Debug.Log(Input.inputString);}
+                if (Input.GetButtonDown("Jump")) {
+                    Jump();
+                        infoText.text=" ";
 
-        }
+                }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.Log("Shoot Portal");
-            Debug.Log("cont = " + cont);
-            throwPortal(portales, cont);
-                infoText.text=" ";
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Debug.Log("Shoot Portal");
+                    Debug.Log("cont = " + cont);
+                    throwPortal(portales, cont);
+                        infoText.text=" ";
 
-        }
-        if (Input.GetButtonDown("Fire2"))
-        {
-                infoText.text=" ";
+                }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                        infoText.text=" ";
 
-            Debug.Log("Cambiaste portal");
-            if(cont<=portales.Length-1){
-                cont += 1;
-            }else{
-                cont =0;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
-        {
-                infoText.text=" ";
+                    Debug.Log("Cambiaste portal");
+                    if(cont<=portales.Length-1){
+                        cont += 1;
+                    }else{
+                        cont =0;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
+                {
+                        infoText.text=" ";
 
-            Run();
-           
-        } 
-        cameraPortalTaj.transform.rotation=mainCamera.transform.rotation;
-        cameraPortalGod.transform.rotation=mainCamera.transform.rotation;
+                    Run();
+                
+                }
+                /*if (Input.GetButtonDown("Menu"))
+                {
+                    Debug.Log("Abriste el menu");
+                    
+                }*/
+                cameraPortalTaj.transform.rotation=mainCamera.transform.rotation;
+                cameraPortalGod.transform.rotation=mainCamera.transform.rotation;
     }
 
     void LookMouse()
