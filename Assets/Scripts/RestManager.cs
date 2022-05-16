@@ -21,6 +21,15 @@ void Start(){
     public void trearDatosGod(){
         StartCoroutine(consumirApiGod());
     }
+    public void traerDatosBuque(){
+        StartCoroutine(consumirApiBuque());
+    }
+    public void traerDatosBarco(){
+        StartCoroutine(consumirApiBarco());
+    }
+    public void traerDatosAvion(){
+        StartCoroutine(consumirApiAvion());
+    }
      public IEnumerator consumirApiTaj(){
     // infoText.text="Cargando...";
     UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/lugares");
@@ -40,6 +49,36 @@ public IEnumerator consumirApiGod(){
     Debug.Log(data[4]["descripcion"]);
 
     infoText.text=data[4]["descripcion"];
+}
+public IEnumerator consumirApiBuque(){
+    // infoText.text="Cargando...";
+    UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/lugares");
+    yield return url.SendWebRequest();
+    // Debug.Log(url.downloadHandler.text);
+    JSONNode data=JSON.Parse(url.downloadHandler.text);
+    Debug.Log(data[1]["descripcion"]);
+
+    infoText.text=data[1]["descripcion"];
+}
+public IEnumerator consumirApiBarco(){
+    // infoText.text="Cargando...";
+    UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/lugares");
+    yield return url.SendWebRequest();
+    // Debug.Log(url.downloadHandler.text);
+    JSONNode data=JSON.Parse(url.downloadHandler.text);
+    Debug.Log(data[2]["descripcion"]);
+
+    infoText.text=data[2]["descripcion"];
+}
+public IEnumerator consumirApiAvion(){
+    // infoText.text="Cargando...";
+    UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/lugares");
+    yield return url.SendWebRequest();
+    // Debug.Log(url.downloadHandler.text);
+    JSONNode data=JSON.Parse(url.downloadHandler.text);
+    Debug.Log(data[3]["descripcion"]);
+
+    infoText.text=data[3]["descripcion"];
 }
 void Update(){
     
