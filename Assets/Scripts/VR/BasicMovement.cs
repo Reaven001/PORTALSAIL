@@ -16,7 +16,7 @@ public class BasicMovement : MonoBehaviour {
     GameObject cameraPortalTaj;
     GameObject cameraPortalGod;
     public GameObject[] portales;
-    private int cont = 0;
+    private int cont;
     private float speed = 10;
     public Text infoText;
 
@@ -67,19 +67,7 @@ public class BasicMovement : MonoBehaviour {
                     Debug.Log("Shoot Portal");
                     Debug.Log("cont = " + cont);
                     throwPortal(portales, cont);
-                        infoText.text=" ";
 
-                }
-                if (Input.GetButtonDown("Fire2"))
-                {
-                        infoText.text=" ";
-
-                    Debug.Log("Cambiaste portal");
-                    if(cont<=portales.Length-1){
-                        cont += 1;
-                    }else{
-                        cont =0;
-                    }
                 }
                 if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
                 {
@@ -88,27 +76,11 @@ public class BasicMovement : MonoBehaviour {
                     Run();
                 
                 }
-                /*if (Input.GetButtonDown("Menu"))
-                {
-                    Debug.Log("Abriste el menu");
-                    
-                }*/
                 cameraPortalTaj.transform.rotation=mainCamera.transform.rotation;
                 cameraPortalGod.transform.rotation=mainCamera.transform.rotation;
     }
 
-    void LookMouse()
-    {
-        hMouse = Input.GetAxis("Mouse X") * horizontalSpeed * Time.deltaTime;
-        vMouse = Input.GetAxis("Mouse Y") * verticalSpeed * Time.deltaTime;
-
-        yReal -= vMouse;
-        yReal = Mathf.Clamp(yReal, -90f, 90f);
-        transform.Rotate(0f, hMouse, 0f);
-        cam.localRotation = Quaternion.Euler(yReal, 0.0f, 0.0f);
-    }
-
-    public void Jump() {
+        public void Jump() {
         if(jumps >= 1) {
             rigidbody.AddForce(Vector3.up * jumpForce);
             jumps--;
@@ -117,11 +89,9 @@ public class BasicMovement : MonoBehaviour {
 
     void throwPortal(GameObject[] portales, int num)
     {
-        
-        Debug.Log("num = " + num);
-        portales[num].transform.rotation = mainCamera.transform.rotation;
+        //portales[num].transform.rotation = mainCamera.transform.rotation;
         portales[num].transform.position = mainCamera.transform.position + mainCamera.transform.forward * 5.0f;
-        cont = 0;
+        
     }
 
     public void Run()
@@ -133,20 +103,36 @@ public class BasicMovement : MonoBehaviour {
         jumps = 1;
     }
 
-    
+    public void PortalTaj(){
+        Debug.Log("Elegiste portal de Taj");
+        cont = 0;
+    }
+    public void PortalMano(){
+        Debug.Log("Elegiste portal de Mano");
+        cont = 1;
+    }
+    public void PortalBuque(){
+        Debug.Log("Elegiste portal de Buque");
+        cont = 2;
+    }
     public void PortalAvion(){
         Debug.Log("Elegiste portal de avion");
+        cont = 3;
     }
-
+    public void PortalPirata(){
+        Debug.Log("Elegiste portal de Pirata");
+        cont = 4;
+    }
     public void PortalDino(){
         Debug.Log("Elegiste portal de dinosaurio");
+        cont = 5;
     }
-
-    public void PortaBuque(){
-        Debug.Log("Elegiste portal de buque");
+    public void PortalMonumento(){
+        Debug.Log("Elegiste portal de Monumento");
+        cont = 6;
     }
-
-    public void PortalPirata(){
-        Debug.Log("Elegiste portal de barco pirata");
+    public void PortalPegaso(){
+        Debug.Log("Elegiste portal de Pegaso");
+        cont = 7;
     }
 }

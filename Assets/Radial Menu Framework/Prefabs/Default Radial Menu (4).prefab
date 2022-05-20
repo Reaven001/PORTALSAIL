@@ -1514,7 +1514,7 @@ MonoBehaviour:
   rt: {fileID: 0}
   parentRM: {fileID: 0}
   button: {fileID: 5519255362674095568}
-  label: Element B
+  label: Pirata
   angleMin: 0
   angleMax: 0
   angleOffset: 0
