@@ -33,23 +33,5 @@ public class MenuPortal : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void PortalAvion(){
-        Debug.Log("Elegiste portal de avion");
-        Resume();
-    }
-
-    public void PortalDino(){
-        Debug.Log("Elegiste portal de dinosaurio");
-        Resume();
-    }
-
-    public void PortaBuque(){
-        Debug.Log("Elegiste portal de buque");
-        Resume();
-    }
-
-    public void PortalPirata(){
-        Debug.Log("Elegiste portal de barco pirata");
-        Resume();
-    }
+    
 }

@@ -102,7 +102,7 @@ public class RMF_RadialMenu : MonoBehaviour {
 
         //If your gamepad uses different horizontal and vertical joystick inputs, change them here!
         //==============================================================================================
-        bool joystickMoved = Input.GetAxis("Mouse X") != 0.0 || Input.GetAxis("Mouse Y") != 0.0;
+        bool joystickMoved = Input.GetAxis("Vertical") != 0.0 || Input.GetAxis("Horizontal") != 0.0;
         //==============================================================================================
 
 
@@ -111,7 +111,7 @@ public class RMF_RadialMenu : MonoBehaviour {
         if (!useGamepad)
             rawAngle = Mathf.Atan2(Input.mousePosition.y - rt.position.y, Input.mousePosition.x - rt.position.x) * Mathf.Rad2Deg;
         else
-            rawAngle = Mathf.Atan2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * Mathf.Rad2Deg;
+            rawAngle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
 
         //If no gamepad, update the angle always. Otherwise, only update it if we've moved the joystick.
         if (!useGamepad)

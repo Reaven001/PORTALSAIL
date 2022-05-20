@@ -132,4 +132,21 @@ public class BasicMovement : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
         jumps = 1;
     }
+
+    
+    public void PortalAvion(){
+        Debug.Log("Elegiste portal de avion");
+    }
+
+    public void PortalDino(){
+        Debug.Log("Elegiste portal de dinosaurio");
+    }
+
+    public void PortaBuque(){
+        Debug.Log("Elegiste portal de buque");
+    }
+
+    public void PortalPirata(){
+        Debug.Log("Elegiste portal de barco pirata");
+    }
 }
