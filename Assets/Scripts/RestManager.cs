@@ -10,10 +10,12 @@ public class RestManager : MonoBehaviour
     public static RestManager instance;
     // public string textValue;
     public Text infoText;
+    public Image marcoInfo;
 
 
 void Start(){
-// infoText.text="vacio";
+     marcoInfo.gameObject.SetActive(false);
+
     }
     public void trearDatosTajMahal(){
         StartCoroutine(consumirApiTaj());
@@ -32,13 +34,14 @@ void Start(){
     }
      public IEnumerator consumirApiTaj(){
     // infoText.text="Cargando...";
-    UnityWebRequest url=UnityWebRequest.Get("https://apimocha.com/portalsail/lugares");
+    UnityWebRequest url=UnityWebRequest.Get("https://restserver-portalsail.herokuapp.com/api/lugares/6287323e09c70885c1c4e77c");
     yield return url.SendWebRequest();
     // Debug.Log(url.downloadHandler.text);
     JSONNode data=JSON.Parse(url.downloadHandler.text);
-    Debug.Log(data[0]["descripcion"]);
+    Debug.Log(data["descripcion"]);
 
-    infoText.text=data[0]["descripcion"];
+    infoText.text=data["descripcion"];
+                           marcoInfo.gameObject.SetActive(true);
 }
 public IEnumerator consumirApiGod(){
     // infoText.text="Cargando...";
@@ -49,6 +52,7 @@ public IEnumerator consumirApiGod(){
     Debug.Log(data[4]["descripcion"]);
 
     infoText.text=data[4]["descripcion"];
+    marcoInfo.gameObject.SetActive(true);
 }
 public IEnumerator consumirApiBuque(){
     // infoText.text="Cargando...";
@@ -59,6 +63,7 @@ public IEnumerator consumirApiBuque(){
     Debug.Log(data[1]["descripcion"]);
 
     infoText.text=data[1]["descripcion"];
+    marcoInfo.gameObject.SetActive(true);
 }
 public IEnumerator consumirApiBarco(){
     // infoText.text="Cargando...";
@@ -69,6 +74,7 @@ public IEnumerator consumirApiBarco(){
     Debug.Log(data[2]["descripcion"]);
 
     infoText.text=data[2]["descripcion"];
+    marcoInfo.gameObject.SetActive(true);
 }
 public IEnumerator consumirApiAvion(){
     // infoText.text="Cargando...";
@@ -77,10 +83,14 @@ public IEnumerator consumirApiAvion(){
     // Debug.Log(url.downloadHandler.text);
     JSONNode data=JSON.Parse(url.downloadHandler.text);
     Debug.Log(data[3]["descripcion"]);
-
+marcoInfo.gameObject.SetActive(true);
     infoText.text=data[3]["descripcion"];
+    marcoInfo.gameObject.SetActive(true);
+    
 }
 void Update(){
+    
+    
     
 }
     // Update is called once per frame

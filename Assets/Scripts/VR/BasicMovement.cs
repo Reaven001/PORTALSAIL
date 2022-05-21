@@ -19,6 +19,7 @@ public class BasicMovement : MonoBehaviour {
     private int cont;
     private float speed = 10;
     public Text infoText;
+    public Image marcoInfo;
 
     float vMouse;
     float hMouse;
@@ -58,7 +59,9 @@ public class BasicMovement : MonoBehaviour {
             Debug.Log(Input.inputString);}
                 if (Input.GetButtonDown("Jump")) {
                     Jump();
-                        infoText.text=" ";
+                  
+                                             infoText.text=" ";
+                           marcoInfo.gameObject.SetActive(false);
 
                 }
 
@@ -72,6 +75,7 @@ public class BasicMovement : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("j"))
                 {
                         infoText.text=" ";
+                           marcoInfo.gameObject.SetActive(false);
 
                     Run();
                 
@@ -89,7 +93,17 @@ public class BasicMovement : MonoBehaviour {
 
     void throwPortal(GameObject[] portales, int num)
     {
-        //portales[num].transform.rotation = mainCamera.transform.rotation;
+        
+        // mainCamera.transform.rotation = new Quaternion(rotx, roty, rotz, rotw);
+        portales[num].transform.eulerAngles = mainCamera.transform.eulerAngles;
+        //   portales[num].transform.Rotate(mainCamera.transform.eulerAngles.x, portales[num].transform.eulerAngles.y  , mainCamera.transform.eulerAngles.z);
+   portales[num].transform.RotateAround(Vector3.up, Mathf.PI);
+
+        
+
+        //  Debug.Log(rot);
+        Debug.Log(portales[num].transform.eulerAngles);
+        Debug.Log(mainCamera.transform.eulerAngles);
         portales[num].transform.position = mainCamera.transform.position + mainCamera.transform.forward * 5.0f;
         
     }
