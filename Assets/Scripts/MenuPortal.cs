@@ -10,7 +10,7 @@ public class MenuPortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Menu")){
+        if (Input.GetButtonDown("Pause")){
             if (GameIsPaused){
                 Resume();
             } else{
@@ -33,5 +33,17 @@ public class MenuPortal : MonoBehaviour
         GameIsPaused = true;
     }
 
+    public void Inicio()
+    {
+        Debug.Log("Te vas al inicio");
+    }
+    public void Instrucciones()
+    {
+        Debug.Log("Te vas a las instrucciones");
+    }
+    public void Salir()
+    {
+        Debug.Log("Saliste del juego");
+    }
     
 }

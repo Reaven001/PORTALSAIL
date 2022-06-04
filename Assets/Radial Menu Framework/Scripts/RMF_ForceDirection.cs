@@ -9,7 +9,7 @@ public class RMF_ForceDirection : MonoBehaviour {
     private RectTransform rt;
 
     [Tooltip("This will force this particular element to always have the specified absolute Z rotation. Use 0 for a straight upwards facing.")]
-    public float forcedZRotation = 0f;
+    public float forcedZRotation = 50f;
 
     private Vector3 rot = Vector3.zero;
 

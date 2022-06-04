@@ -102,7 +102,7 @@ public class RMF_RadialMenu : MonoBehaviour {
 
         //If your gamepad uses different horizontal and vertical joystick inputs, change them here!
         //==============================================================================================
-        bool joystickMoved = Input.GetAxis("Vertical") != 0.0 || Input.GetAxis("Horizontal") != 0.0;
+        bool joystickMoved = Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0;
         //==============================================================================================
 
 
