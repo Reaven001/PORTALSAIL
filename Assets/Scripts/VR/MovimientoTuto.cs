@@ -253,7 +253,7 @@ public class MovimientoTuto : MonoBehaviour {
     {
         Debug.Log("Portal disparado");
         // mainCamera.transform.rotation = new Quaternion(rotx, roty, rotz, rotw);
-        portales.transform.eulerAngles = mainCamera.transform.eulerAngles;
+        portales.transform.rotation = mainCamera.transform.rotation;
         //   portales[num].transform.Rotate(mainCamera.transform.eulerAngles.x, portales[num].transform.eulerAngles.y  , mainCamera.transform.eulerAngles.z);
         portales.transform.Rotate(Vector3.up, Mathf.PI);
 
