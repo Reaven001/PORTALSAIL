@@ -72,7 +72,6 @@ public class BasicMovement : MonoBehaviour {
                     Debug.Log("Shoot Portal");
                     Debug.Log("cont = " + cont);
                     throwPortal(portales, cont);
-
                 }
                 if (Input.GetButtonDown("Cancel"))
                 {
@@ -104,7 +103,7 @@ public class BasicMovement : MonoBehaviour {
         // mainCamera.transform.rotation = new Quaternion(rotx, roty, rotz, rotw);
         portales[num].transform.eulerAngles = mainCamera.transform.eulerAngles;
         //   portales[num].transform.Rotate(mainCamera.transform.eulerAngles.x, portales[num].transform.eulerAngles.y  , mainCamera.transform.eulerAngles.z);
-        portales[num].transform.RotateAround(Vector3.up, Mathf.PI);
+        portales[num].transform.Rotate(Vector3.up, Mathf.PI);
 
         //  Debug.Log(rot);
         Debug.Log(portales[num].transform.eulerAngles);
