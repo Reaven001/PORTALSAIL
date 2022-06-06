@@ -53,6 +53,11 @@ public class BasicMovement : MonoBehaviour {
             transform.position += velocity * Time.deltaTime;
         }
 
+        if (transform.position.y <= -10){
+            Debug.Log("Te caiste del mapa!!");
+            transform.position = new Vector3 (3.86f , 5.48f, 13.67f);
+        }
+
         // transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime); // W S arriba y abajo
         // transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime); // A D alrededor
 
@@ -102,7 +107,7 @@ public class BasicMovement : MonoBehaviour {
         Debug.Log("Portal disparado");
         // mainCamera.transform.rotation = new Quaternion(rotx, roty, rotz, rotw);
         portales[num].transform.eulerAngles = mainCamera.transform.eulerAngles;
-           portales[num].transform.Rotate(mainCamera.transform.eulerAngles.x, portales[num].transform.eulerAngles.y  , mainCamera.transform.eulerAngles.z);
+        //portales[num].transform.Rotate(mainCamera.transform.eulerAngles.x, portales[num].transform.eulerAngles.y  , mainCamera.transform.eulerAngles.z);
         portales[num].transform.Rotate(Vector3.up, Mathf.PI);
 
         //  Debug.Log(rot);
